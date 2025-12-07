@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+
+  /* Linhas laterais */
+  --edge-line-offset: 56px;
+  --edge-line-width: 1px;
+  --edge-line-color-top: rgba(255,255,255,0.10);
+  --edge-line-color-bot: rgba(255,255,255,0.32);
+  --edge-line-z: 40;
+  --edge-line-color-top-light: rgba(0,0,0,0.08);
+  --edge-line-color-bot-light: rgba(0,0,0,0.24);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* Ajuste de offset por breakpoint */
+@media (max-width: 1024px){ :root{ --edge-line-offset: 40px; } }
+@media (max-width: 640px){  :root{ --edge-line-offset: 28px; } }
+
+/* Alterna cores conforme tema claro */
+@media (prefers-color-scheme: light) {
+  :root{
+    --edge-line-color-top: var(--edge-line-color-top-light);
+    --edge-line-color-bot: var(--edge-line-color-bot-light);
+  }
+}
+
+/* Esconde em telas muito pequenas */
+@media (max-width: 360px){
+  .hide-edge-lines-on-very-small { display: none; }
+}
